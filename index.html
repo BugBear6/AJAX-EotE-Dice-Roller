@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EotE Roller</title>
+</head>
+<body>
+    
+    <form id ="roll_form" name="roll_form" method = "post" action = "add_roll.php">
+        <input  type="hidden" value="admin" name="user"/>
+        <br>
+        Boost <input type="number" min = "0" max="5" step="1" value="0" name="boost"/>
+        <br>
+        Setback <input type="number" min = "0" max="5" step="1" value="0" name="setback"/>
+        <br>
+        Ability <input type="number" min = "0" max="5" step="1" value="0" name="ab"/>
+        <br>
+        Difficulty <input type="number" min = "0" max="5" step="1" value="0" name="ab"/>
+        <br>
+        Proficiency <input type="number" min = "0" max="5" step="1" value="0" name="prof"/>
+        <br>
+        Challenge <input type="number" min = "0" max="5" step="1" value="0" name="ch"/>
+        <br>
+        Force <input type="number" min = "0" max="1" step="1" value="0" name="force"/>
+        <br>
+        <input type="submit" value="Submit"/>
+    </form>
+    
+    <br>
+    <button id ="reset">Reset</button>
+    
+    <script type="text/javascript" src="jquery2.js"></script>
+    <script type="text/javascript" src="roller.js"></script>
+</body>
+</html>
