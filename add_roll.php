@@ -2,6 +2,7 @@
 require_once('server.php');
 require_once('dices.php');
 
+$user = $_POST['user'];
 $boost_number = $_POST['boost'];
 $setback_number = $_POST['setback'];
 $ab_number= $_POST['ab'];
@@ -52,10 +53,21 @@ for( $i=1; $ch_number >= $i; $i++ ){
 for( $i=1; $force_number >= $i; $i++ ){
     $result .= $force->result()."," ;
 }
+/*
+// Send result to a database
+if( $stmt = $db -> prepare("INSERT INTO rolls(user, result) VALUES(?, ?)") ) {
+    $stmt -> bind_param("ss", $user, $result); 
+    $stmt -> execute();
+    $stmt -> close();
+} else {
+    die ("Błąd połączenia");
+}
+*/
 
 $result_arr =  explode(',', $result);
 echo "<hr>Array of all dice results<br>";
 print_r( $result_arr );
+
 
 // Sort in the right order (without blanks)
 // and count given numbers
@@ -123,7 +135,6 @@ echo "<hr>After ordered<br>";
 print_r($ordered);
 
 // Compare negative and positive results
-
 $success_count = $success_count - $failure_count;
 $advantage_count = $advantage_count - $threat_count;
 
@@ -132,7 +143,7 @@ echo "<br>";
 echo "total advantage ".$advantage_count;
 echo "<hr><br>";
 
-
+// Present results
 if ($success_count > 0 ){
     for($i=0; $success_count > $i; $i++){
         echo "SUCCESS<br>";
@@ -152,3 +163,19 @@ if ($advantage_count > 0 ){
         echo "THREAT<br>";
     } 
 }
+
+for($i=0; $triumph_count > $i; $i++){
+    echo "TRIUMPH<br>";
+} 
+    
+for($i=0; $despair_count > $i; $i++){
+    echo "DESPAIR<br>";
+} 
+
+for($i=0; $dark_count > $i; $i++){
+    echo "DARK<br>";
+} 
+
+for($i=0; $light_count > $i; $i++){
+    echo "LIGH<br>";
+} 
