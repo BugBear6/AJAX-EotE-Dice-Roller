@@ -9,19 +9,19 @@
     <form id ="roll_form" name="roll_form" method = "post" action = "add_roll.php">
         <input  type="hidden" value="admin" name="user"/>
         <br>
-        Boost <input type="number" min = "0" max="5" step="1" value="0" name="boost"/>
+        Boost <input type="number" min = "0" max="5" step="1" value="0" name="boost" id="boost"/>
         <br>
-        Setback <input type="number" min = "0" max="5" step="1" value="0" name="setback"/>
+        Setback <input type="number" min = "0" max="5" step="1" value="0" name="setback" id="setback"/>
         <br>
-        Ability <input type="number" min = "0" max="5" step="1" value="0" name="ab"/>
+        Ability <input type="number" min = "0" max="5" step="1" value="0" name="ab" id="ab"/>
         <br>
-        Difficulty <input type="number" min = "0" max="5" step="1" value="0" name="ab"/>
+        Difficulty <input type="number" min = "0" max="5" step="1" value="0" name="dif" id="dif"/>
         <br>
-        Proficiency <input type="number" min = "0" max="5" step="1" value="0" name="prof"/>
+        Proficiency <input type="number" min = "0" max="5" step="1" value="0" name="prof" id="prof"/>
         <br>
-        Challenge <input type="number" min = "0" max="5" step="1" value="0" name="ch"/>
+        Challenge <input type="number" min = "0" max="5" step="1" value="0" name="ch" id="ch"/>
         <br>
-        Force <input type="number" min = "0" max="1" step="1" value="0" name="force"/>
+        Force <input type="number" min = "0" max="1" step="1" value="0" name="force" id="force"/>
         <br>
         <input type="submit" value="Submit"/>
     </form>
@@ -30,6 +30,7 @@
     <button id ="reset">Reset</button>
     
     <script type="text/javascript" src="jquery2.js"></script>
+    <script type="text/javascript" src="dices.js"></script>
     <script type="text/javascript" src="roller.js"></script>
 </body>
 </html>
