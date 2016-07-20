@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>EotE Roller</title>
+    
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
     
+    <div id="results_box" style="width:600px; height:150px; margin: 20px; background: #f4f4f4;">
+        <ul id="results_list">
+            <li>
+                <span class="id" style="display:none">0</span>
+                <span class="username"></span>
+                <span class="result"></span>
+            </li>
+        </ul>
+    </div>
+    
     <form id ="roll_form" name="roll_form" method = "post" action = "add_roll.php">
-        <input  type="hidden" value="admin" name="user"/>
+        <input  type="hidden" value="admin" name="user" id="user"/>
         <br>
         Boost <input type="number" min = "0" max="5" step="1" value="0" name="boost" id="boost"/>
         <br>
@@ -29,8 +41,8 @@
     <br>
     <button id ="reset">Reset</button>
     
-    <script type="text/javascript" src="jquery2.js"></script>
-    <script type="text/javascript" src="dices.js"></script>
-    <script type="text/javascript" src="roller.js"></script>
+    <script type="text/javascript" src="js/jquery2.js"></script>
+    <script type="text/javascript" src="js/dices.js"></script>
+    <script type="text/javascript" src="js/add_roll.js"></script>
 </body>
 </html>
