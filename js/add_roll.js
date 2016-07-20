@@ -60,25 +60,18 @@ $('#roll_form').submit(function( event ){
         result_str += force.result()+"," ;
     }
    
-/*
+
     // Send result to a DB
+    // and delete the oldest entry in DB
     $.ajax({
         url: "send.php",
         type: 'post',
         data: "user=" + user + '&result=' + result_str,
-      /*success: function(response, status, http){
-
-            $.each(response, function(index, item){
-                $('#chat_box').val( $('#chat_box').val() + item.user_name + ': ' + item.user_comment + '\n' );
-                $('#last_displayed_chat_id').val(item.chat_id);
-            });
-        },
         error: function(http, status, error){
             console.log('An Error Occured. Sorry... ' + error);
         }
 
     }); // ajax call end
-*/
 
     return false;
 }); // function end
