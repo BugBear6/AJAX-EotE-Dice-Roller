@@ -1,11 +1,11 @@
 <?php
 require_once ( 'server.php' );
-$user = $_POST['user'];
-$result = $_POST['result'];
+$user = htmlentities( $_POST['user'], ENT_QUOTES, "UTF-8");
+$result = htmlentities( $_POST['result'], ENT_QUOTES, "UTF-8");
+$dices = htmlentities( $_POST['dices'], ENT_QUOTES, "UTF-8");
 
-
-// Insert result to the database
-if( $db -> query("INSERT INTO rolls(user, result) VALUES('$user', '$result');") ) {
+// Insert result into the database
+if( $db -> query("INSERT INTO rolls(user, result, dices) VALUES('$user', '$result', '$dices');") ) {
     
         // get the oldest id from the database
         if( $temp = $db -> query("SELECT id FROM rolls LIMIT 1") ) {

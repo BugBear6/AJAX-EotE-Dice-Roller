@@ -306,7 +306,7 @@ var Ch = function (_Dice6) {
 }(Dice);
 
 /*
-* Challenge
+* Force
 */
 var Force = function (_Dice7) {
     _inherits(Force, _Dice7);
@@ -349,6 +349,32 @@ var Force = function (_Dice7) {
     }]);
 
     return Force;
+}(Dice);
+
+
+/*
+* d10
+*/
+var D10 = function (_Dice8) {
+    _inherits(D10, _Dice8);
+
+    function D10(max) {
+        _classCallCheck(this, D10);
+
+        var _this8 = _possibleConstructorReturn(this, Object.getPrototypeOf(D10).call(this, max));
+
+        _this8.max = 10;
+        return _this8;
+    }
+
+    _createClass(D10, [{
+        key: "result",
+        value: function result() {
+            return this.roll();
+        }
+    }]);
+
+    return D10;
 }(Dice);
 
 /*************/    
