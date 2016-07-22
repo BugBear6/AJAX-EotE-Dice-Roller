@@ -1,29 +1,217 @@
-*{
-    margin:0;
-    padding:0;
+*{ 
+    box-sizing: border-box;    
+    color: black;
+    margin: 0;
+    padding: 0;
+    
 }
 
-img{
+@font-face {
+    font-family: TeutonNormal;
+    src: url("/fonts/TeutonNormal.otf") format("opentype");
+}
+
+.btn{
+    text-transform: uppercase  !important;
+    font-family: 'TeutonNormal' !important;
+    font-size: 16px !important;
+}
+
+body{
+    background: url('/img/bg.jpg') no-repeat fixed #f4f4f4;
+    font-size: 16px;
+}
+
+/* login form 
+ */
+#login_box{
+    max-width: 400px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    margin-top: 80px;
+    
+}
+
+.navbar{
+    margin-bottom: 5px !important;
+}
+#logo_art{
+      
+}
+
+#roll_button{
+    margin-bottom: 5px;
+}
+#logout{
+    padding: 15px 25px;
+    color: #4A5F40;
+}
+
+#logout:hover, #logout:active{
+    color: #D2D3C6;
+}
+
+#chosen_dices_box{
+    min-height: 130px;
+}
+
+.del_dice img{
     width: 50px;
     height: 50px;
 }
-
+    
 li{
     list-style: none;
     display: inline;
 }
 
-#results_box{
-    background: #f4f4f4;
-    min-width: 600px;
+/* Dices list */
+#dices_list{
+   
+    margin: 0 auto;
+    
 }
 
+#dices_list img{
+    width: 50px;
+    height: 50px
+}
 #dices_list li{
     cursor: pointer;
 }
+
+/* Chosen dices */
+#chosen_dices_list{
+    margin: 0 auto;
+    width: 90%;
+}
+
+#comment{
+    margin-bottom: 10px;
+}
+
+/* REsults */ 
+.username{
+    display: block;
+    background: #4A5F40;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 15px;
+
+}
+
+.dices{
+    background: #030303;
+    padding: 5px 10px 5px 10px;
+    
+}
+
+.result_comment{
+    padding: 5px 10px 5px 10px;
+    color: black;
+    display: block;
+    background: white;
+    min-height: 30px;
+}
+
+.result{
+    background: #D2D3C6;
+    min-height: 30px
+}
+
+#results_box{
+    min-height:  350px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+.result_dice img{
+    width: 35px;
+    height: 35px;
+}
+
+.result_icon img{
+    margin: 3px 0;
+    width: 65px;
+    height: 65px;
+}
+.result_item{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.d10_result{
+    font-size: 36px;
+    text-align: center;
+    vertical-align: middle; 
+}
+
+#destiny_box{
+        display: inline-block !important;
+        padding: 15px;
+}
+
+#destiny_list img{
+    box-sizing: content-box;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+}
+
+#destiny_list li{
+margin-right: 15px;
+}
+
+.btn-group-vertical{
+    font-size: 10px;
+}
+.destiny_buttons{
+    width: 30px;
+}
+
+/*  */
 
 .del_dice{
     min-width: 25px ;
     min-height: 25px ;
     cursor: pointer;
+}
+#reset{
+    margin: 0 10px;
+}
+
+.info_text{
+    padding-left: 10px;
+    color: #384d3e;
+    text-transform: uppercase;
+    font-family: 'TeutonNormal';
+    font-size: 16px;
+    margin: 0 0 1px
+}
+.well{
+    margin-bottom: 3px !important;
+    padding: 9px !important;
+}
+
+/************MEDIA***************/
+/*@media (max-width: 600px) {*/
+/*  .well {*/
+/*    display: none;*/
+/*  }*/
+/*}*/
+
+#destiny_ok, #destiny_err, #roll_ok, #roll_err{
+    display: none;
+}
+#roll_ok strong, #destiny_ok strong{
+    color: #3E773F;
+}
+
+#roll_err strong, #destiny_err strong{
+    color: #A94442;
 }

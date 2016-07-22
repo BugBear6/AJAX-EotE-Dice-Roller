@@ -10,7 +10,7 @@ if( isset($_POST['id'])){
 }
 
 // Get the last result
-$query = "SELECT id, user, result, dices 
+$query = "SELECT id, user, result, dices, comment
           FROM rolls
           WHERE id > $id
           ORDER BY id DESC
@@ -19,32 +19,49 @@ $query = "SELECT id, user, result, dices
 if ( $data = $db -> query( $query ) ){
     
     if ($x = $data -> fetch_object() ){
-        $result = $x->result;
-        $user = $x->user;
-        $returned_id = $x->id;
-        $dices = $x->dices;
-        
-        $db -> close();
          
-        $arr = array('user' => $user, 
-                     'returned_id' => $returned_id, 
-                     'result' => $result, 
-                     'dices' => $dices
-        );
-    
-        echo json_encode($arr);
+        $arr = array('user' => $x->user, 
+                     'returned_id' => $x->id, 
+                     'result' => $x->result, 
+                     'dices' => $x->dices,
+                     'comment' => $x->comment
+                     );
+                     
+                    // Destiny points query
+                    $d_query = "SELECT light, dark FROM destiny LIMIT 1";
+                    if ( $data2 = $db -> query($d_query)){
+                        if ($y = $data2 -> fetch_object() ){
+                            $arr['light'] = $y ->light;
+                            $arr['dark'] = $y ->dark;
+                        }
+                    } // destiny points query end
+                     
+            $db -> close();
+            echo json_encode($arr);
         
     } else {
         
-        // if query returns empty
-        //  (to avoid ajax error response)
-        $db -> close();
-        echo "{}";
+            // Destiny points query
+            $d_query = "SELECT light, dark FROM destiny LIMIT 1";
+            if ( $data2 = $db -> query($d_query)){
+                if ($y = $data2 -> fetch_object() ){
+                    $destiny_arr = array();
+                    $destiny_arr['light'] = $y ->light;
+                    $destiny_arr['dark'] = $y ->dark;
+                }
+            } // destiny points query end
+            
+    $db -> close();
+    echo json_encode($destiny_arr);
+    
     }
     
 } else {
     die("Error ". $db->errno);
 }
+
+
+
 
 
 

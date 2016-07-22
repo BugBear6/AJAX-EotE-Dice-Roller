@@ -1,9 +1,14 @@
 /*
  * Reset form fields
  */
-$('#reset').click(function(){
+function reset_form(){
    $('#roll_form').find('input[type=number]').val('0'); 
-   $('#chosen_dices_list').children().remove(); 
+   $('#chosen_dices_list').children().remove();
+   $('#comment').val('');
+} 
+
+$('#reset').click(function(){
+    reset_form();
 });
 
 /*
@@ -209,10 +214,10 @@ $('#chosen_dices_box').on('click', '.del_d10', function(){
 /* 
  * Generate and send result to DB
  */
-$('#roll_form').submit(function( event ){
+$('#roll_button').click(function( event ){
     event.preventDefault();
     
-    var user = "admin", // TO DO -> get username from PHP session
+    var user = $('#user').val(), 
         boost_number = $('#boost').val(),
         setback_number = $('#setback').val(),
         ab_number = $('#ab').val(),
@@ -221,6 +226,7 @@ $('#roll_form').submit(function( event ){
         ch_number = $('#ch').val(),
         force_number = $('#force').val(), 
         d10_number = $('#d10').val(), 
+        comment = $('#comment').val(),
         
         boost = new Boost(),
         setback = new Setback(),
@@ -290,10 +296,12 @@ $('#roll_form').submit(function( event ){
     $.ajax({
         url: "send.php",
         type: 'post',
-        data: 'user=' + user + '&dices=' + dices_str + '&result=' + result_str,
+        data: 'user=' + user + '&dices=' + dices_str + '&result=' + result_str + '&comment=' + comment,
         success: function(){
             
             // Remove the oldest entry
+            $('#roll_ok').fadeIn().delay(4000).fadeOut();
+            
             li_count = $('#results_list').find('.result_item').length;
             if (li_count >= 5 ) {
                 $('#results_list').find('.result_item').first().remove();
@@ -301,11 +309,13 @@ $('#roll_form').submit(function( event ){
             
         },
         error: function(http, status, error){
+            $('#roll_err').fadeIn().delay(4000).fadeOut();
             console.log('An Error Occured. Sorry... ' + error);
         }
 
     }); // ajax call end
 
+    reset_form();
     return false;
 }); // function end
 
@@ -317,8 +327,20 @@ function get_results() {
             
     var id = $('#results_list').find('.id').last().text(), 
         dices_arr, 
-        result_arr;
+        result_arr,
         
+        success_count = 0,
+        failure_count = 0,
+        advantage_count = 0,
+        threat_count = 0,
+        triumph_count = 0,
+        despair_count = 0,
+        light_count = 0,
+        dark_count = 0,
+        d10_count = 0,
+        d10_val = 0;
+        
+    // If there is no id to get from the form
     if (!id) { 
         id = 0; 
     }
@@ -330,23 +352,28 @@ function get_results() {
         dataType: 'json',
         
       success: function(response, status, http){
+
+        // Set desitny points values
+        var light_val = $('#light_val'),
+            dark_val = $('#dark_val');
+
+        if( light_val.attr('light') != response.light ) {
+            light_val.attr('light', response.light);
+            light_val.text(response.light);
+        }
+        
+        if( dark_val.attr('dark') != response.dark ) {
+            dark_val.attr('dark', response.dark);
+            dark_val.text(response.dark);
+        }
+ 
+        // Check if result table needs update    
         if (response.returned_id > id ) {
             
               result_arr = response.result.split(',');
               dices_arr = response.dices.split(',');
 
             // Count results 
-            var success_count = 0,
-                failure_count = 0,
-                advantage_count = 0,
-                threat_count = 0,
-                triumph_count = 0,
-                despair_count = 0,
-                light_count = 0,
-                dark_count = 0,
-                d10_count = 0,
-                d10_val = 0;
-    
             for(var j=0; j<result_arr.length; j++){
                 if (result_arr[j] == 'success' ){
                     success_count++;
@@ -397,7 +424,7 @@ function get_results() {
             /*
              * Enter username and <li> item into results list
              */
-            $('#results_list').append( "<li class='result_item'> <span class='id' style='display:none'>" + response.returned_id + "</span> <span class='username'>" + response.user + ":</span> <ul class='dices'></ul> <ul class='result'></ul> </li>" );
+            $('#results_list').append( "<li class='result_item'> <span class='id' style='display:none'>" + response.returned_id + "</span> <span class='username'>" + response.user + "</span> <ul class='dices'></ul> <ul class='result'></ul> <span class='result_comment'>"+response.comment+"</span></li>" );
         
             // Compare negative and positive results
             //  and enter into results list
@@ -488,6 +515,10 @@ function get_results() {
                 }
                 
             } // if statement end
+            
+            // scroll to the bottom of div (when overflow)
+            $('#results_box').scrollTop(1E10);
+            
         }, // success function end
         error: function(http, status, error){
             console.log('An Error Occured. Sorry... ' + error);
