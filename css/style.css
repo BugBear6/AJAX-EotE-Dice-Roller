@@ -34,13 +34,30 @@ body{
     margin-top: 80px;
     
 }
-
+/***************NAV **************/
 .navbar{
-    margin-bottom: 5px !important;
+    
+    min-height: 70px;
+    background-position: center bottom;
+    margin-bottom: 0 !important;
 }
-#logo_art{
-      
+
+.nav_link {
+    display: inline-block;
+    padding: 30px 25px 0 25px;
+    
+    
+    font-size: 24px;
+    color: black;
+    font-family: 'Unica One', cursive;
 }
+
+.nav_link:hover{
+    text-decoration:none;
+    color: #EC1C24;
+   
+}
+/***********************/
 
 #roll_button{
     margin-bottom: 5px;
@@ -84,10 +101,7 @@ li{
 }
 
 /* Chosen dices */
-#chosen_dices_list{
-    margin: 0 auto;
-    width: 90%;
-}
+
 
 #comment{
     margin-bottom: 10px;
@@ -121,7 +135,8 @@ li{
 
 .result{
     background: #D2D3C6;
-    min-height: 30px
+    min-height: 30px;
+    padding-left: 10px;
 }
 
 #results_box{
@@ -205,7 +220,7 @@ margin-right: 15px;
 /*  }*/
 /*}*/
 
-#destiny_ok, #destiny_err, #roll_ok, #roll_err{
+#destiny_ok, #destiny_err, #roll_ok, #roll_err, #destiny_change{
     display: none;
 }
 #roll_ok strong, #destiny_ok strong{
@@ -214,4 +229,8 @@ margin-right: 15px;
 
 #roll_err strong, #destiny_err strong{
     color: #A94442;
+}
+
+#destiny_change strong{
+    color: #457E9B;
 }

@@ -108,13 +108,13 @@ $('#add_force').click(function(){
 
 $('#add_d10').click(function(){
     var counter = $('#d10').val(),
-        max = 1;
+        max = 2;
         
     counter++;
     if ( counter > max ) 
         counter = max;
     else 
-        $('#chosen_dices_list').append("<li class='del_dice del_force'><img src='img/dices/d10.gif'></li>");
+        $('#chosen_dices_list').append("<li class='del_dice del_force'><img src='img/dices/d10.png'></li>");
     $('#d10').val(counter);
 });
 
@@ -338,7 +338,7 @@ function get_results() {
         light_count = 0,
         dark_count = 0,
         d10_count = 0,
-        d10_val = 0;
+        d10_val = '';
         
     // If there is no id to get from the form
     if (!id) { 
@@ -352,19 +352,29 @@ function get_results() {
         dataType: 'json',
         
       success: function(response, status, http){
+          
 
         // Set desitny points values
         var light_val = $('#light_val'),
-            dark_val = $('#dark_val');
+            dark_val = $('#dark_val'), 
+            has_destiny_changed = false;
+            
+
 
         if( light_val.attr('light') != response.light ) {
             light_val.attr('light', response.light);
             light_val.text(response.light);
+            has_destiny_changed = true;
         }
         
         if( dark_val.attr('dark') != response.dark ) {
             dark_val.attr('dark', response.dark);
             dark_val.text(response.dark);
+            has_destiny_changed = true;
+        }
+        
+        if ( has_destiny_changed ){
+            $('#destiny_change').fadeIn().delay(4000).fadeOut();
         }
  
         // Check if result table needs update    
@@ -416,7 +426,7 @@ function get_results() {
             }
             for(var j=0; j<result_arr.length; j++){
                 if (  ! isNaN( parseFloat( result_arr[j])  ) ){
-                    d10_val = result_arr[j];
+                    d10_val += result_arr[j];
                     d10_count++;
                 }
             }
@@ -473,7 +483,7 @@ function get_results() {
                 }
                
             // d10s    
-            if ( d10_val > 0  ){
+            if ( d10_count > 0  ){
                     $('#results_list').find('.result').last().append("<li><span class='d10_result'>"+d10_val+"</span></li>");
                 }
                 
@@ -511,7 +521,7 @@ function get_results() {
                 } //  count dices for end
                 
                 for ( var x=0; d10_count > x; x++){
-                    $('#results_list').find('.dices').last().append("<li class='result_dice' class='result_icon'><img src='img/dices/d10.gif'></li>");
+                    $('#results_list').find('.dices').last().append("<li class='result_dice' class='result_icon'><img src='img/dices/d10.png'></li>");
                 }
                 
             } // if statement end

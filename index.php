@@ -15,12 +15,17 @@
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="css/font-awesome.min.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Crimson+Text:400,700' rel='stylesheet' type='text/css'>
+    
+    <link rel=icon href=/img/favicon.ico>
 
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="container-fluid">
+        <div class="container">
             
             <a class="navbar-brand" href="/">
                 <img alt="Brand" src="img/logo.png"  id="logo_art">
@@ -29,7 +34,7 @@
             <p class="navbar-right">    
             <a href="logout.php" class=" btn pull-right" id="logout">Log out</a>
             </p>            
-        </div>
+        </div> <!--/ container /-->
     </nav>
 
     <div class="container">
@@ -47,7 +52,7 @@
                         <li id="add_prof"><img src="img/dices/prof.png" alt="prof.png"></li>
                         <li id="add_ch"><img src="img/dices/ch.png" alt="ch.png"></li>
                         <li id="add_force"><img src="img/dices/force.png" alt="force.png"></li>
-                        <li id="add_d10"><img src="img/dices/d10.gif" alt="d10.png"></li>
+                        <li id="add_d10"><img src="img/dices/d10.png" alt="d10.png"></li>
                     </ul>
 
                     <form id="roll_form" class="hidden" name="roll_form">
@@ -133,6 +138,8 @@
                       
                           <div id='roll_ok' class='alert alert-success' role='alert'><strong>Success!</strong> Your roll has been saved.</div>
                           <div id='roll_err' class='alert alert-danger' role='alert'><strong>Error!</strong> Your roll has not been saved :(</div>
+                          
+                          <div id='destiny_change' class='alert alert-info' role='alert'><strong>Attention!</strong> Destiny points has been changed.</div>
                           
                       </p>
                       

@@ -3,7 +3,7 @@ class Dice{
         this.max = 6;
         }
     roll(){   
-        return Math.floor( (Math.random() * this.max) +1 );
+        return Math.floor( (Math.random() * this.max) );
     }
 }
 
@@ -18,16 +18,16 @@ class Setback extends Dice{
         
         result(){
           switch( this.roll() ){
-              case 1:
-              case 2: 
+              case 0:
+              case 1: 
                   return "blank";
                   break;
+              case 2:
               case 3:
-              case 4:
                   return "failure";
                   break;
-              case 5:
-              case 6: 
+              case 4:
+              case 5: 
                   return "threat";
                   break;
           }
@@ -45,20 +45,20 @@ class Boost extends Dice{
     
     result(){
         switch( this.roll() ){
-            case 1:
-            case 2: 
+            case 0:
+            case 1: 
                 return "blank";
                 break;
-            case 3: 
+            case 2: 
                 return "success";
                 break;
-            case 4:
+            case 3:
                 return "success,advantage";
                 break;
-            case 5:
+            case 4:
                 return "advantage,advantage";
                 break;
-            case 6: 
+            case 5: 
                 return "advantage";
                 break;
         }
@@ -75,24 +75,24 @@ class Ab extends Dice{
     
     result(){
         switch( this.roll() ){
-            case 1:
+            case 0:
                 return "blank";
                 break;
+            case 1: 
             case 2: 
-            case 3: 
                 return "success";
                 break;
-            case 4:
+            case 3:
                 return "success,success";
                 break;
+            case 4:
             case 5:
-            case 6:
                 return "advantage";
                 break;
-            case 7:
+            case 6:
                 return "success,advantage";
                 break;
-            case 8:
+            case 7:
                 return "advantage,advantage";
                 break;
         }
@@ -110,24 +110,24 @@ class Dif extends Dice{
     
     result(){
         switch( this.roll() ){
-            case 1:
+            case 0:
                 return "blank";
                 break;
-            case 2: 
+            case 1: 
                 return "failure";
                 break;
-            case 3: 
+            case 2: 
                 return "failure,failure";
                 break;
+            case 3:
             case 4:
             case 5:
-            case 6:
                 return "threat";
                 break;
-            case 7:
+            case 6:
                 return "threat,threat";
                 break;
-            case 8:
+            case 7:
                 return "failure,threat";
                 break;
         }
@@ -145,30 +145,30 @@ class Prof extends Dice{
     
     result(){
         switch( this.roll() ){
-            case 1:
+            case 0:
                 return "blank";
                 break;
-            case 2: 
-            case 3:
+            case 1: 
+            case 2:
                 return "success";
                 break;
-            case 4:      
-            case 5:
+            case 3:      
+            case 4:
                 return "success,success";
                 break;
-            case 6:
+            case 5:
                 return "advantage";
                 break;
+            case 6:
             case 7:
             case 8:
-            case 9:
                 return "success,advatage";
                 break;
+            case 9:
             case 10:
-            case 11:
                 return "advantage,advantage";
                 break;
-            case 12:
+            case 11:
                 return "triumph";
                 break;
         }
@@ -186,30 +186,30 @@ class Ch extends Dice{
     
     result(){
         switch( this.roll() ){
-            case 1:
+            case 0:
                 return "blank";
                 break;
-            case 2: 
-            case 3:
+            case 1: 
+            case 2:
                 return "failure";
                 break;
-            case 4:      
-            case 5:
+            case 3:      
+            case 4:
                 return "failure,failure";
                 break;
+            case 5:
             case 6:
-            case 7:
                 return "threat";
                 break;
+            case 7:
             case 8:
-            case 9:
                 return "failure,threat";
                 break;
+            case 9:
             case 10:
-            case 11:
                 return "threat,threat";
                 break;
-            case 12:
+            case 11:
                 return "despair";
                 break;
         }
@@ -227,24 +227,24 @@ class Force extends Dice{
     
      result(){
         switch( this.roll() ){
-            case 1:
-            case 2: 
-            case 3:
-            case 4:      
+            case 0:
+            case 1: 
+            case 2:
+            case 3:      
+            case 4:
             case 5:
-            case 6:
                 return "dark";
                 break;
-            case 7:
+            case 6:
                 return "dark,dark";
                 break;
+            case 7:
             case 8:
-            case 9:
                 return "light";
                 break;
+            case 9:
             case 10:
             case 11:
-            case 12:
                 return "light,light";
                 break;
         }
@@ -264,14 +264,3 @@ class D10 extends Dice{
         return this.roll();
         }
 }
-
-
-
-
-
-
-
-
-
-
-

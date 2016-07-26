@@ -7,6 +7,7 @@
     }
     
     $secret = password_hash("starwars", PASSWORD_DEFAULT);
+    $secret_admin = password_hash("lordvader", PASSWORD_DEFAULT);
     
     if (isset($_POST['user']) OR isset($_POST['password'])){
             
@@ -27,19 +28,27 @@
             $is_form_valid = false;
         }
         
-        if( password_verify($password,  $secret) ){
+        if($user_valid == 'admin'){
+            if( password_verify($password,  $secret_admin) ){
+                $is_form_valid = true;
+            }
+        } else{
+            if( password_verify($password,  $secret) ){
             $is_form_valid = true;
-        } else {
+            } else {
             $is_form_valid = false;
+            }
         }
-            
+        
+        
         if ($is_form_valid){
             $_SESSION['logged'] = true;
             $_SESSION['user'] = $user;
             header('Location: index.php');
         }
+        
+        
     }
-    
 ?>
 
 
@@ -51,19 +60,19 @@
 
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
-
+    
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img alt="Brand" src="img/logo.png" id="logo_art">
-                </a>
-            </div>
-        </div>
-    </nav>
+<nav class="navbar">
+    <div class="container">
+
+        <a class="navbar-brand" href="/">
+            <img alt="Brand" src="img/logo.png" id="logo_art">
+        </a>
+
+    </div>
+</nav>
 
     <div class="container">
         <div id="login_box" class= "form-group">

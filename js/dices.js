@@ -1,7 +1,3 @@
-/***************/      
-/* BABEL START */ 
-/***************/  
-
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -22,7 +18,7 @@ var Dice = function () {
     _createClass(Dice, [{
         key: "roll",
         value: function roll() {
-            return Math.floor(Math.random() * this.max + 1);
+            return Math.floor(Math.random() * this.max);
         }
     }]);
 
@@ -32,6 +28,8 @@ var Dice = function () {
 /*
 * Setback
 */
+
+
 var Setback = function (_Dice) {
     _inherits(Setback, _Dice);
 
@@ -48,16 +46,16 @@ var Setback = function (_Dice) {
         key: "result",
         value: function result() {
             switch (this.roll()) {
+                case 0:
                 case 1:
-                case 2:
                     return "blank";
                     break;
+                case 2:
                 case 3:
-                case 4:
                     return "failure";
                     break;
+                case 4:
                 case 5:
-                case 6:
                     return "threat";
                     break;
             }
@@ -70,6 +68,8 @@ var Setback = function (_Dice) {
 /*
 * Boost
 */
+
+
 var Boost = function (_Dice2) {
     _inherits(Boost, _Dice2);
 
@@ -86,20 +86,20 @@ var Boost = function (_Dice2) {
         key: "result",
         value: function result() {
             switch (this.roll()) {
+                case 0:
                 case 1:
-                case 2:
                     return "blank";
                     break;
-                case 3:
+                case 2:
                     return "success";
                     break;
-                case 4:
+                case 3:
                     return "success,advantage";
                     break;
-                case 5:
+                case 4:
                     return "advantage,advantage";
                     break;
-                case 6:
+                case 5:
                     return "advantage";
                     break;
             }
@@ -108,10 +108,11 @@ var Boost = function (_Dice2) {
 
     return Boost;
 }(Dice);
-
 /*
 * Ability
 */
+
+
 var Ab = function (_Dice3) {
     _inherits(Ab, _Dice3);
 
@@ -128,24 +129,24 @@ var Ab = function (_Dice3) {
         key: "result",
         value: function result() {
             switch (this.roll()) {
-                case 1:
+                case 0:
                     return "blank";
                     break;
+                case 1:
                 case 2:
-                case 3:
                     return "success";
                     break;
-                case 4:
+                case 3:
                     return "success,success";
                     break;
+                case 4:
                 case 5:
-                case 6:
                     return "advantage";
                     break;
-                case 7:
+                case 6:
                     return "success,advantage";
                     break;
-                case 8:
+                case 7:
                     return "advantage,advantage";
                     break;
             }
@@ -158,6 +159,8 @@ var Ab = function (_Dice3) {
 /*
 * Dificulty
 */
+
+
 var Dif = function (_Dice4) {
     _inherits(Dif, _Dice4);
 
@@ -174,24 +177,24 @@ var Dif = function (_Dice4) {
         key: "result",
         value: function result() {
             switch (this.roll()) {
-                case 1:
+                case 0:
                     return "blank";
                     break;
-                case 2:
+                case 1:
                     return "failure";
                     break;
-                case 3:
+                case 2:
                     return "failure,failure";
                     break;
+                case 3:
                 case 4:
                 case 5:
-                case 6:
                     return "threat";
                     break;
-                case 7:
+                case 6:
                     return "threat,threat";
                     break;
-                case 8:
+                case 7:
                     return "failure,threat";
                     break;
             }
@@ -202,8 +205,10 @@ var Dif = function (_Dice4) {
 }(Dice);
 
 /*
-* Proficiency
+* Dificulty
 */
+
+
 var Prof = function (_Dice5) {
     _inherits(Prof, _Dice5);
 
@@ -220,30 +225,30 @@ var Prof = function (_Dice5) {
         key: "result",
         value: function result() {
             switch (this.roll()) {
-                case 1:
+                case 0:
                     return "blank";
                     break;
+                case 1:
                 case 2:
-                case 3:
                     return "success";
                     break;
+                case 3:
                 case 4:
-                case 5:
                     return "success,success";
                     break;
-                case 6:
+                case 5:
                     return "advantage";
                     break;
+                case 6:
                 case 7:
                 case 8:
-                case 9:
                     return "success,advatage";
                     break;
+                case 9:
                 case 10:
-                case 11:
                     return "advantage,advantage";
                     break;
-                case 12:
+                case 11:
                     return "triumph";
                     break;
             }
@@ -256,6 +261,8 @@ var Prof = function (_Dice5) {
 /*
 * Challenge
 */
+
+
 var Ch = function (_Dice6) {
     _inherits(Ch, _Dice6);
 
@@ -272,30 +279,30 @@ var Ch = function (_Dice6) {
         key: "result",
         value: function result() {
             switch (this.roll()) {
-                case 1:
+                case 0:
                     return "blank";
                     break;
+                case 1:
                 case 2:
-                case 3:
                     return "failure";
                     break;
+                case 3:
                 case 4:
-                case 5:
                     return "failure,failure";
                     break;
+                case 5:
                 case 6:
-                case 7:
                     return "threat";
                     break;
+                case 7:
                 case 8:
-                case 9:
                     return "failure,threat";
                     break;
+                case 9:
                 case 10:
-                case 11:
                     return "threat,threat";
                     break;
-                case 12:
+                case 11:
                     return "despair";
                     break;
             }
@@ -308,6 +315,8 @@ var Ch = function (_Dice6) {
 /*
 * Force
 */
+
+
 var Force = function (_Dice7) {
     _inherits(Force, _Dice7);
 
@@ -324,24 +333,24 @@ var Force = function (_Dice7) {
         key: "result",
         value: function result() {
             switch (this.roll()) {
+                case 0:
                 case 1:
                 case 2:
                 case 3:
                 case 4:
                 case 5:
-                case 6:
                     return "dark";
                     break;
-                case 7:
+                case 6:
                     return "dark,dark";
                     break;
+                case 7:
                 case 8:
-                case 9:
                     return "light";
                     break;
+                case 9:
                 case 10:
                 case 11:
-                case 12:
                     return "light,light";
                     break;
             }
@@ -351,10 +360,11 @@ var Force = function (_Dice7) {
     return Force;
 }(Dice);
 
-
 /*
 * d10
 */
+
+
 var D10 = function (_Dice8) {
     _inherits(D10, _Dice8);
 
@@ -376,7 +386,3 @@ var D10 = function (_Dice8) {
 
     return D10;
 }(Dice);
-
-/*************/    
-/* BABEL END */
-/*************/
