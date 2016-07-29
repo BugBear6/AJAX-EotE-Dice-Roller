@@ -2,7 +2,7 @@
 
 **I made this app to play Fantasy Flight Game's [Star Wars Edge of the Empire RPG](https://www.fantasyflightgames.com/en/products/star-wars-edge-of-the-empire/) game online. This is a chat that allows you to roll FFG's custom dices and it displays results in a form of a list.**
 
-Most of the logics are parsed by JS. Every dice type expands the Dice class. Rolls and results are send to a DB via AJAX. Next they are requested from DB also via AJAX and presented by jQuery on the page. Two databases are used. One for rolls and result and another for Desiny Points current pool.  
+Most of the logics are parsed by JS. Every dice type expands the Dice class. Rolls and results are send to a DB via AJAX. Next they are requested from DB also via AJAX and presented by jQuery on the page. Two databases are used. One for rolls and results and another for Desiny Points current pool.  
   
 JavaScript classes are obvoiusly ES6 feature. I used Babel's online [*Try it out*](https://babeljs.io/repl/) for browsers compatibility. 
 
