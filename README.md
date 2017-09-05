@@ -1,4 +1,4 @@
-#Edge of the Empire Dice Roller Online
+# Edge of the Empire Dice Roller Online
 
 **I made this app to play Fantasy Flight Game's [Star Wars Edge of the Empire RPG](https://www.fantasyflightgames.com/en/products/star-wars-edge-of-the-empire/) game online. This is a chat that allows you to roll FFG's custom dices and it displays results in a form of a list.**
 
@@ -6,7 +6,7 @@ Most of the logics are parsed by JS. Every dice type expands the Dice class. Rol
   
 JavaScript classes are obvoiusly ES6 feature. I used Babel's online [*Try it out*](https://babeljs.io/repl/) for browsers compatibility. 
 
-##App features
+## App features
 * Click to select dices from the list. You can then subtract them and add comment (i.e. *I attack Jabba the Hutt with my lightsaber!*).  
 * Last five results will be printet in the list on the right.  
 * You can be logged in as user or as admin. Admin has extra feature to manipulate Destiny Points pool.   
@@ -16,7 +16,7 @@ JavaScript classes are obvoiusly ES6 feature. I used Babel's online [*Try it out
 * Dices images and icons are made by [w4malinie](http://w4malinie.tk/). 
  
 ---
-##Picures
+## Picures
    
 These are above mentioned FFG's custom Star Wars dices:   
 ![EotE dices](https://raw.githubusercontent.com/BugBear6/PHP-EotE-Dice-Roller/master/desc/SWDice.jpg)   
